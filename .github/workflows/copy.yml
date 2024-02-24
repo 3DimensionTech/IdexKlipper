@@ -1,1 +1,19 @@
+name: Copy Changes from Klipper3d/klipper to 3Dimension
 
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Кожного дня о 00:00 UTC
+
+
+jobs:
+    copy_changes:
+        runs-on: ubuntu-latest
+   
+        steps:
+        - name: Checkout repository
+        uses: actions/checkout@v2
+   
+        - name: Copy changes
+        run: |
+            cd 3Dimension/IdexKlipper
+            git pull https://github.com/Klipper3d/klipper.git master
